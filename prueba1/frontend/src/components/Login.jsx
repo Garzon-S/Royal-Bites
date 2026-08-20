@@ -46,33 +46,37 @@ export function Login() {
 
         {error && <div className="alert-error">{error}</div>}
 
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label>Correo Electrónico</label>
-            <input
-              type="email"
-              placeholder="ejemplo@correo.com"
-              value={correo}
-              onChange={(e) => setCorreo(e.target.value)}
-              required
-            />
-          </div>
+<form onSubmit={handleSubmit}>
+  <div className="input-group">
+    {/* Vinculamos con htmlFor="correo" */}
+    <label htmlFor="correo">Correo Electrónico</label>
+    <input
+      id="correo" /* Coincide con el htmlFor */
+      type="email"
+      placeholder="ejemplo@correo.com"
+      value={correo}
+      onChange={(e) => setCorreo(e.target.value)}
+      required
+    />
+  </div>
 
-          <div className="input-group">
-            <label>Contraseña</label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+  <div className="input-group">
+    {/* Vinculamos con htmlFor="password" */}
+    <label htmlFor="password">Contraseña</label>
+    <input
+      id="password" /* Coincide con el htmlFor */
+      type="password"
+      placeholder="••••••••"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+  </div>
 
-          <button type="submit" className="btn-login" disabled={cargando}>
-            {cargando ? 'Ingresando...' : 'Iniciar Sesión'}
-          </button>
-        </form>
+  <button type="submit" className="btn-login" disabled={cargando}>
+    {cargando ? 'Ingresando...' : 'Iniciar Sesión'}
+  </button>
+</form>
       </div>
     </div>
   );

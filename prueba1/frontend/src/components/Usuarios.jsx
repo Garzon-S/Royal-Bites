@@ -98,7 +98,7 @@ export function Usuarios() {
         </div>
         <div className="navbar-user">
           <span>Hola, <strong>{user.nombre}</strong></span>
-          <button onClick={handleLogout} className="btn-logout">Cerrar Sesión</button>
+          <button type="button" onClick={handleLogout} className="btn-logout">Cerrar Sesión</button>
         </div>
       </header>
 
@@ -109,7 +109,7 @@ export function Usuarios() {
             <h2>Gestión de Usuarios</h2>
             <p>Personas registradas actualmente en la base de datos MySQL</p>
           </div>
-          <button onClick={abrirModalCrear} className="btn-primary">+ Nuevo Usuario</button>
+          <button type="button" onClick={abrirModalCrear} className="btn-primary">+ Nuevo Usuario</button>
         </div>
 
         {/* Tabla de Usuarios */}
@@ -136,12 +136,13 @@ export function Usuarios() {
                     <td><code>{usr.password}</code></td>
                     <td>
                       <button 
-                        onClick={() => abrirModalEditar(usr)} 
-                        className="btn-action" 
-                        title="Editar Datos"
-                      >
-                        ✏️
-                      </button>
+  type="button" 
+  onClick={() => abrirModalEditar(usr)} 
+  className="btn-action" 
+  title="Editar Datos"
+>
+  ✏️
+</button>
                     </td>
                   </tr>
                 ))}
@@ -159,72 +160,81 @@ export function Usuarios() {
 
             <form onSubmit={handleSubmit}>
               <div className="form-row">
-                <div className="input-group">
-                  <label>Tipo Documento</label>
-                  <select 
-                    value={formData.tipoDocumento} 
-                    onChange={(e) => setFormData({...formData, tipoDocumento: e.target.value})}
-                    disabled={modoEdicion}
-                  >
-                    <option value="CC">Cédula de Ciudadanía (CC)</option>
-                    <option value="CE">Cédula de Extranjería (CE)</option>
-                  </select>
-                </div>
+{/* Tipo Documento */}
+<div className="input-group">
+  <label htmlFor="tipoDocumento">Tipo Documento</label>
+  <select
+    id="tipoDocumento"
+    value={formData.tipoDocumento}
+    onChange={(e) => setFormData({ ...formData, tipoDocumento: e.target.value })}
+    disabled={modoEdicion}
+  >
+    <option value="CC">Cédula de Ciudadanía (CC)</option>
+    <option value="CE">Cédula de Extranjería (CE)</option>
+  </select>
+</div>
 
-                <div className="input-group">
-                  <label>Número Documento</label>
-                  <input 
-                    type="number" 
-                    value={formData.idPersona} 
-                    onChange={(e) => setFormData({...formData, idPersona: e.target.value})}
-                    required 
-                    disabled={modoEdicion}
-                  />
-                </div>
-              </div>
+{/* Número Documento */}
+<div className="input-group">
+  <label htmlFor="idPersona">Número Documento</label>
+  <input
+    id="idPersona"
+    type="number"
+    value={formData.idPersona}
+    onChange={(e) => setFormData({ ...formData, idPersona: e.target.value })}
+    required
+    disabled={modoEdicion}
+  />
+</div>
 
-              <div className="form-row">
-                <div className="input-group">
-                  <label>Primer Nombre</label>
-                  <input 
-                    type="text" 
-                    value={formData.pNombre} 
-                    onChange={(e) => setFormData({...formData, pNombre: e.target.value})}
-                    required 
-                  />
-                </div>
+{/* Primer Nombre */}
+<div className="input-group">
+  <label htmlFor="pNombre">Primer Nombre</label>
+  <input
+    id="pNombre"
+    type="text"
+    value={formData.pNombre}
+    onChange={(e) => setFormData({ ...formData, pNombre: e.target.value })}
+    required
+  />
+</div>
 
-                <div className="input-group">
-                  <label>Primer Apellido</label>
-                  <input 
-                    type="text" 
-                    value={formData.pApellido} 
-                    onChange={(e) => setFormData({...formData, pApellido: e.target.value})}
-                    required 
-                  />
-                </div>
-              </div>
+{/* Primer Apellido */}
+<div className="input-group">
+  <label htmlFor="pApellido">Primer Apellido</label>
+  <input
+    id="pApellido"
+    type="text"
+    value={formData.pApellido}
+    onChange={(e) => setFormData({ ...formData, pApellido: e.target.value })}
+    required
+  />
+</div>
 
-              <div className="input-group">
-                <label>Correo Electrónico</label>
-                <input 
-                  type="email" 
-                  value={formData.correo} 
-                  onChange={(e) => setFormData({...formData, correo: e.target.value})}
-                  required 
-                />
-              </div>
+{/* Correo Electrónico */}
+<div className="input-group">
+  <label htmlFor="correoModal">Correo Electrónico</label>
+  <input
+    id="correoModal"
+    type="email"
+    value={formData.correo}
+    onChange={(e) => setFormData({ ...formData, correo: e.target.value })}
+    required
+  />
+</div>
 
-              <div className="input-group">
-                <label>Contraseña</label>
-                <input 
-                  type="text" 
-                  value={formData.password} 
-                  onChange={(e) => setFormData({...formData, password: e.target.value})}
-                  required 
-                />
-              </div>
-
+{/* Contraseña */}
+<div className="input-group">
+  <label htmlFor="passwordModal">Contraseña</label>
+  <input
+    id="passwordModal"
+    type="text"
+    value={formData.password}
+    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+    required
+  />
+</div>
+</div>
               <div className="modal-actions">
                 <button type="button" onClick={() => setMostrarModal(false)} className="btn-cancel">
                   Cancelar
